@@ -1,0 +1,278 @@
+[gd_scene format=3 uid="uid://dwh1iwh472cmj"]
+
+[ext_resource type="Shader" uid="uid://bugcvoudxj4do" path="res://hsv.gdshader" id="1_23n8c"]
+[ext_resource type="Script" uid="uid://dru0d0sydbhgj" path="res://color_picker.gd" id="1_f8o4x"]
+[ext_resource type="Texture2D" uid="uid://iy2ypyw23rtx" path="res://icons/bars/colorbar.svg" id="2_0wp5c"]
+[ext_resource type="FontFile" uid="uid://dewav6fl1k1ta" path="res://Nunito/static/Nunito-Medium.ttf" id="3_jr3ku"]
+[ext_resource type="Texture2D" uid="uid://ccn1o4v8iq2gw" path="res://icons/bars/slider.svg" id="4_56nrr"]
+[ext_resource type="Script" uid="uid://ba5hftr0bpxuf" path="res://hoverbox.gd" id="6_br00e"]
+[ext_resource type="Material" uid="uid://dreubfxchfdl8" path="res://color slider.tres" id="6_kx200"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kx200"]
+size = Vector2(30, 30)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_br00e"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.15487596, 0.154876, 0.15487596, 1)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jr3ku"]
+shader = ExtResource("1_23n8c")
+shader_parameter/color = Vector3(0, 1, 1)
+shader_parameter/display = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_56nrr"]
+shader = ExtResource("1_23n8c")
+shader_parameter/color = Vector3(0, 0, 0)
+shader_parameter/display = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f8o4x"]
+shader = ExtResource("1_23n8c")
+shader_parameter/color = Vector3(0, 0, 0)
+shader_parameter/display = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_br00e"]
+shader = ExtResource("1_23n8c")
+shader_parameter/color = Vector3(0, 0, 0)
+shader_parameter/display = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_56nrr"]
+font = ExtResource("3_jr3ku")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56nrr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jr3ku"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f8o4x"]
+
+[node name="color picker" type="Control" unique_id=1912905689]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1122.0
+offset_bottom = -618.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_f8o4x")
+
+[node name="gripdetect" type="Area2D" parent="." unique_id=328336471]
+position = Vector2(-10, -11)
+script = ExtResource("6_br00e")
+
+[node name="hitbox" type="CollisionShape2D" parent="gripdetect" unique_id=2125555408]
+position = Vector2(25, 26)
+shape = SubResource("RectangleShape2D_kx200")
+
+[node name="picker" type="Node2D" parent="." unique_id=1029470504]
+position = Vector2(1, 2)
+
+[node name="Panel" type="Panel" parent="picker" unique_id=32047469]
+offset_left = -1.0
+offset_top = 33.0
+offset_right = 241.0
+offset_bottom = 273.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_br00e")
+
+[node name="h" type="Sprite2D" parent="picker" unique_id=663004340]
+material = SubResource("ShaderMaterial_jr3ku")
+position = Vector2(118, 79)
+texture = ExtResource("2_0wp5c")
+
+[node name="s" type="Sprite2D" parent="picker" unique_id=471250085]
+material = SubResource("ShaderMaterial_56nrr")
+position = Vector2(118, 127)
+texture = ExtResource("2_0wp5c")
+
+[node name="v" type="Sprite2D" parent="picker" unique_id=1284056461]
+material = SubResource("ShaderMaterial_f8o4x")
+position = Vector2(118, 175)
+texture = ExtResource("2_0wp5c")
+
+[node name="a" type="Sprite2D" parent="picker" unique_id=155126756]
+material = SubResource("ShaderMaterial_br00e")
+position = Vector2(118, 223)
+texture = ExtResource("2_0wp5c")
+
+[node name="Label" type="Label" parent="picker" unique_id=361393842]
+offset_left = 10.0
+offset_top = 46.0
+offset_right = 50.0
+offset_bottom = 75.0
+text = "Hue"
+label_settings = SubResource("LabelSettings_56nrr")
+
+[node name="Label2" type="Label" parent="picker" unique_id=1670833931]
+offset_left = 10.0
+offset_top = 93.0
+offset_right = 86.0
+offset_bottom = 122.0
+text = "Saturation"
+label_settings = SubResource("LabelSettings_56nrr")
+
+[node name="Label3" type="Label" parent="picker" unique_id=247935988]
+offset_left = 10.0
+offset_top = 141.0
+offset_right = 88.0
+offset_bottom = 170.0
+text = "Lightness"
+label_settings = SubResource("LabelSettings_56nrr")
+
+[node name="Label4" type="Label" parent="picker" unique_id=1297186218]
+offset_left = 11.0
+offset_top = 189.0
+offset_right = 89.0
+offset_bottom = 218.0
+text = "Opacity"
+label_settings = SubResource("LabelSettings_56nrr")
+
+[node name="hi" type="LineEdit" parent="picker" unique_id=1091897198]
+offset_left = 151.0
+offset_top = 40.0
+offset_right = 229.625
+offset_bottom = 71.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_jr3ku")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_56nrr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jr3ku")
+text = "0"
+alignment = 2
+emoji_menu_enabled = false
+virtual_keyboard_type = 2
+
+[node name="si" type="LineEdit" parent="picker" unique_id=1539173165]
+offset_left = 151.0
+offset_top = 88.0
+offset_right = 229.625
+offset_bottom = 119.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_jr3ku")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_56nrr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jr3ku")
+text = "100"
+alignment = 2
+emoji_menu_enabled = false
+virtual_keyboard_type = 2
+
+[node name="vi" type="LineEdit" parent="picker" unique_id=192285276]
+offset_left = 151.0
+offset_top = 136.0
+offset_right = 229.625
+offset_bottom = 167.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_jr3ku")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_56nrr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jr3ku")
+text = "100"
+alignment = 2
+emoji_menu_enabled = false
+virtual_keyboard_type = 2
+
+[node name="ai" type="LineEdit" parent="picker" unique_id=2062490035]
+offset_left = 151.0
+offset_top = 184.0
+offset_right = 229.625
+offset_bottom = 215.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_jr3ku")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_56nrr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jr3ku")
+text = "100"
+alignment = 2
+emoji_menu_enabled = false
+virtual_keyboard_type = 2
+
+[node name="hex" type="LineEdit" parent="picker" unique_id=407984746]
+offset_left = 12.0
+offset_top = 230.0
+offset_right = 100.0
+offset_bottom = 261.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_jr3ku")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_56nrr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jr3ku")
+text = "#ff0000ff"
+emoji_menu_enabled = false
+virtual_keyboard_type = 2
+
+[node name="hs" type="HSlider" parent="picker" unique_id=1008390923]
+material = ExtResource("6_kx200")
+offset_left = 2.0
+offset_top = 62.5
+offset_right = 235.0
+offset_bottom = 94.5
+theme_override_icons/grabber = ExtResource("4_56nrr")
+theme_override_icons/grabber_highlight = ExtResource("4_56nrr")
+theme_override_icons/grabber_disabled = ExtResource("4_56nrr")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_f8o4x")
+max_value = 360.0
+step = 0.1
+
+[node name="ss" type="HSlider" parent="picker" unique_id=1712704677]
+material = ExtResource("6_kx200")
+offset_left = 2.0
+offset_top = 110.5
+offset_right = 235.0
+offset_bottom = 142.5
+theme_override_icons/grabber = ExtResource("4_56nrr")
+theme_override_icons/grabber_highlight = ExtResource("4_56nrr")
+theme_override_icons/grabber_disabled = ExtResource("4_56nrr")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_f8o4x")
+step = 0.1
+
+[node name="vs" type="HSlider" parent="picker" unique_id=1596444355]
+material = ExtResource("6_kx200")
+offset_left = 2.0
+offset_top = 158.5
+offset_right = 235.0
+offset_bottom = 190.5
+theme_override_icons/grabber = ExtResource("4_56nrr")
+theme_override_icons/grabber_highlight = ExtResource("4_56nrr")
+theme_override_icons/grabber_disabled = ExtResource("4_56nrr")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_f8o4x")
+step = 0.1
+
+[node name="as" type="HSlider" parent="picker" unique_id=1804371385]
+material = ExtResource("6_kx200")
+offset_left = 2.0
+offset_top = 206.5
+offset_right = 235.0
+offset_bottom = 238.5
+theme_override_icons/grabber = ExtResource("4_56nrr")
+theme_override_icons/grabber_highlight = ExtResource("4_56nrr")
+theme_override_icons/grabber_disabled = ExtResource("4_56nrr")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_f8o4x")
+step = 0.1
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1231107780]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 30.0
+mouse_filter = 2
+color = Color(1, 0, 0, 1)
+
+[connection signal="mouse_entered" from="gripdetect" to="gripdetect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="gripdetect" to="gripdetect" method="_on_mouse_exited"]
+[connection signal="text_submitted" from="picker/hi" to="." method="_on_hi_text_submitted"]
+[connection signal="text_submitted" from="picker/si" to="." method="_on_si_text_submitted"]
+[connection signal="text_submitted" from="picker/vi" to="." method="_on_vi_text_submitted"]
+[connection signal="text_submitted" from="picker/ai" to="." method="_on_ai_text_submitted"]
+[connection signal="text_submitted" from="picker/hex" to="." method="_on_hex_text_submitted"]
+[connection signal="value_changed" from="picker/hs" to="." method="_on_hs_value_changed"]
+[connection signal="value_changed" from="picker/ss" to="." method="_on_ss_value_changed"]
+[connection signal="value_changed" from="picker/vs" to="." method="_on_vs_value_changed"]
+[connection signal="value_changed" from="picker/as" to="." method="_on_as_value_changed"]

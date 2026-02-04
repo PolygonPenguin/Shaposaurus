@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dbp7au1via33h"]
+
+[ext_resource type="Script" uid="uid://6y6hkgn1luxu" path="res://path_segment.gd" id="1_rh3dr"]
+
+[node name="path segment" type="Node2D" unique_id=62185851]
+script = ExtResource("1_rh3dr")
+
+[node name="seg" type="Line2D" parent="." unique_id=743916556]
+points = PackedVector2Array(0, 0, 101, 5, 166, 18, 211, 26, 282, 67)
+width = 3.0
+default_color = Color(0, 0.5647059, 1, 1)
+begin_cap_mode = 2
+end_cap_mode = 2

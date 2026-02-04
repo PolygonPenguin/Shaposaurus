@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://5j7abcim5o8y"]
+
+[ext_resource type="Script" uid="uid://bpyon61yofion" path="res://joint.gd" id="1_mifim"]
+[ext_resource type="Texture2D" uid="uid://bwrup8oe52kdk" path="res://icons/nodes/nd_11.svg" id="2_a8cec"]
+[ext_resource type="PackedScene" uid="uid://bd8jt8smluk36" path="res://handle.tscn" id="3_a8cec"]
+[ext_resource type="Script" uid="uid://ba5hftr0bpxuf" path="res://hoverbox.gd" id="5_vpbaf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tmot8"]
+radius = 8.0
+
+[node name="joint" type="Node2D" unique_id=500590079]
+script = ExtResource("1_mifim")
+
+[node name="handle" parent="." unique_id=1613345391 instance=ExtResource("3_a8cec")]
+
+[node name="handle2" parent="." unique_id=901195156 instance=ExtResource("3_a8cec")]
+
+[node name="node" type="Sprite2D" parent="." unique_id=602912539]
+texture = ExtResource("2_a8cec")
+
+[node name="gripdetect" type="Area2D" parent="." unique_id=1184799876]
+script = ExtResource("5_vpbaf")
+
+[node name="hitbox" type="CollisionShape2D" parent="gripdetect" unique_id=1264636872]
+shape = SubResource("CircleShape2D_tmot8")
+
+[connection signal="mouse_entered" from="gripdetect" to="gripdetect" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="gripdetect" to="gripdetect" method="_on_mouse_exited"]

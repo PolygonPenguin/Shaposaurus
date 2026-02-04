@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dsqatu5pwrscq"]
+
+[ext_resource type="Script" uid="uid://cxqx2dw4quy14" path="res://shape.gd" id="1_t2h0s"]
+[ext_resource type="PackedScene" uid="uid://cajfnr5iqcoxs" path="res://path.tscn" id="3_jt2y5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t2h0s"]
+
+[node name="shape" type="Node2D" unique_id=315991467]
+script = ExtResource("1_t2h0s")
+
+[node name="fill" type="Polygon2D" parent="." unique_id=2090558401]
+antialiased = true
+
+[node name="stroke" type="Line2D" parent="." unique_id=1220768506]
+points = PackedVector2Array(51, 114, 220, 122, 406, 152, 370, 342, 133, 333)
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="gripdetect" type="Area2D" parent="." unique_id=1841826856]
+
+[node name="path" parent="." unique_id=697919284 instance=ExtResource("3_jt2y5")]
+visible = false
+
+[node name="mouse" type="Area2D" parent="." unique_id=1981446629]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouse" unique_id=515952624]
+shape = SubResource("CircleShape2D_t2h0s")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="mouse" unique_id=114404522]
+
+[connection signal="area_entered" from="gripdetect" to="." method="_on_gripdetect_area_entered"]
+[connection signal="area_exited" from="gripdetect" to="." method="_on_gripdetect_area_exited"]

@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dreubfxchfdl8"]
+
+[ext_resource type="Shader" uid="uid://doa33bqcowiv2" path="res://color_picker.gdshader" id="1_pfyek"]
+
+[resource]
+shader = ExtResource("1_pfyek")
+shader_parameter/color = Color(0.74, 0.31080002, 0.31080002, 1)

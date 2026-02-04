@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://deeegrwigvi5i"]
+
+[ext_resource type="Script" uid="uid://bll56i7sh6g20" path="res://main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dsqatu5pwrscq" path="res://shape.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dwh1iwh472cmj" path="res://color_picker.tscn" id="3_h2yge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(240128, 100000)
+
+[node name="Main" type="Node2D" unique_id=2138598572]
+script = ExtResource("1_0xm2m")
+
+[node name="shape" parent="." unique_id=315991467 instance=ExtResource("2_0xm2m")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=299840825]
+
+[node name="Area2D" type="Area2D" parent="Camera2D" unique_id=1431809830]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Area2D" unique_id=48665475]
+position = Vector2(-23713, 0)
+shape = SubResource("RectangleShape2D_h2yge")
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="color picker" parent="." unique_id=1912905689 instance=ExtResource("3_h2yge")]
+offset_left = -392.0
+offset_top = -176.0
+offset_right = -392.0
+offset_bottom = -176.0
+
+[connection signal="mouse_entered" from="Camera2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Camera2D/Area2D" to="." method="_on_area_2d_mouse_exited"]
